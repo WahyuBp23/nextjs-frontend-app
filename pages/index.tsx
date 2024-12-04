@@ -2,7 +2,8 @@ import Head from "next/head";
 import Image from "next/image";
 import localFont from "next/font/local";
 import styles from "@/styles/Home.module.css";
-import Button from "@/components/atoms";
+import Button from "@/components/atoms/Button";
+import Link from "next/link";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -16,6 +17,8 @@ const geistMono = localFont({
 });
 
 export default function Home() {
+  const products = [1, 2, 3];
+
   return (
     <>
       <Head>
@@ -70,6 +73,18 @@ export default function Home() {
             >
               Read our docs
             </a>
+            <Link href={"/about"}>About</Link>
+            <Link href={"/about/detail/123"}>About Detail</Link>
+            <div>
+              <h1>Daftar Produk</h1>
+              <ul>
+                {products.map((id) => (
+                  <li key={id}>
+                    <Link href={`/product/${id}`}>Lihat Produk {id}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </main>
         <footer className={styles.footer}>
