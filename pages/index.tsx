@@ -44,9 +44,7 @@ export default function Home() {
               Get started by editing <code>pages/index.tsx</code>.
             </li>
             <li>Save and see your changes instantly.</li>
-            <li>
-              <Button />
-            </li>
+            <li>{/* <Button /> */}</li>
           </ol>
 
           <div className={styles.ctas}>
