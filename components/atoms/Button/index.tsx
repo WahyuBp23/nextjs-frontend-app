@@ -1,14 +1,13 @@
-import { promises } from "dns";
 import Link from "next/link";
 import React, { CSSProperties, MouseEventHandler, ReactNode } from "react";
 
 interface ButtonProps {
   type: "button" | "link";
-  isExternal: boolean;
-  isDisabled: boolean;
-  isLoading: boolean;
-  href: string;
-  className: string[];
+  isExternal?: boolean;
+  isDisabled?: boolean;
+  isLoading?: boolean;
+  href?: string;
+  className?: string[];
   title?: string;
   style?: string;
   target?: string;
@@ -16,7 +15,6 @@ interface ButtonProps {
   onClickButton?: MouseEventHandler<HTMLButtonElement> | Promise<void>;
   children: ReactNode;
 }
-
 export default function Button({
   type,
   isExternal,
@@ -32,9 +30,9 @@ export default function Button({
   children,
 }: ButtonProps) {
   if (isDisabled || isLoading) {
-    if (isDisabled) className.push("disabled");
+    if (isDisabled) className?.push("disabled");
     return (
-      <span className={className.join(" ")} style={style as CSSProperties}>
+      <span className={className?.join(" ")} style={style as CSSProperties}>
         {isLoading ? (
           <>
             <span className={`spinner-border spinner-border-sm`} role="status">
@@ -53,7 +51,7 @@ export default function Button({
       return (
         <a
           href={href}
-          className={className.join(" ")}
+          className={className?.join(" ")}
           style={style as CSSProperties}
           title={title}
           target={target}
@@ -62,32 +60,32 @@ export default function Button({
           {children}
         </a>
       );
+    } else {
+      return (
+        <Link
+          className={className?.join(" ")}
+          href={href || ""}
+          style={style as CSSProperties}
+          onClick={onClickA}
+        >
+          {children}
+        </Link>
+      );
     }
-  } else {
-    return (
-      <Link
-        className={className.join(" ")}
-        href={href}
-        style={style as CSSProperties}
-        onClick={onClickA}
-      >
-        {children}
-      </Link>
-    );
   }
 
   return (
     <button
       title={title}
-      className={className.join(" ")}
+      className={className?.join(" ")}
       style={style as CSSProperties}
       onClick={
         onClickButton && typeof onClickButton === "function"
           ? (event: React.MouseEvent<HTMLButtonElement>) => onClickButton(event)
           : undefined
       }
-      >
-        {children}
+    >
+      {children}
     </button>
   );
 }
