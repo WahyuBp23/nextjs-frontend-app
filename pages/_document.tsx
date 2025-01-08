@@ -8,6 +8,20 @@ export default function Document() {
         <Main />
         <NextScript />
         <script src="/assets/js/bootstrap.bundle.min.js" defer />
+        <script src="js/scripts.js" defer />
+        <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+          crossOrigin="anonymous"
+          defer
+        />
+        <script src="assets/demo/chart-area-demo.js" defer />
+        <script src="assets/demo/chart-bar-demo.js" defer />
+        <script
+          src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+          crossOrigin="anonymous"
+          defer
+        />
+        <script src="js/datatables-simple-demo.js" defer />
       </body>
     </Html>
   );
