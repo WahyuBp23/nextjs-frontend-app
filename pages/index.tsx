@@ -12,7 +12,14 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout />
+      <Layout>
+        <div className="container-fluid px-4">
+          <h1 className="mt-4">Users</h1>
+          <ol className="breadcrumb mb-4">
+            <li className="breadcrumb-item active">Users</li>
+          </ol>
+        </div>
+      </Layout>
     </>
   );
 }
