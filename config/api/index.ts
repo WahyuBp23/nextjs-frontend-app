@@ -1,5 +1,5 @@
 import axios, { Axios, AxiosRequestConfig } from "axios";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
 interface CallAPIProps extends AxiosRequestConfig {
   url?: string;
@@ -24,13 +24,13 @@ export default async function callAPI({
       Authorization: `Bearer ${serveToken}`,
     };
   } else if (isToken) {
-    const tokenCookies = Cookies.get("token");
-    if (tokenCookies) {
-      const jwtToken = atob(tokenCookies);
-      headers = {
-        Authorization: `Bearer ${jwtToken}`,
-      };
-    }
+    //   const tokenCookies = Cookies.get("token");
+    //   if (tokenCookies) {
+    //     const jwtToken = atob(tokenCookies);
+    //     headers = {
+    //       Authorization: `Bearer ${jwtToken}`,
+    //     };
+    //   }
   }
   const response = await axios({
     url,
@@ -53,7 +53,7 @@ export default async function callAPI({
   const { length } = Object.keys(response.data);
   const res = {
     error: false,
-    massage: 'success',
+    massage: "success",
     data: length > 1 ? response.data : response.data.data,
   };
   return res;

@@ -1,8 +1,35 @@
 import Head from "next/head";
 import Layout from "@/components/organisms/Layout";
+import { useCallback, useEffect, useState } from "react";
+import { userType } from "@/services/data-types/user-type";
+import { userService } from "@/services/user-service";
+import Button from "@/components/atoms/Button";
 
 export default function Home() {
-  const products = [1, 2, 3];
+  const [isLoading, setIsLoading] = useState(false);
+  const [users, setUsers] = useState<userType[]>([]);
+
+  const getUser = useCallback(async () => {
+    setIsLoading(true);
+
+    try {
+      const response = await userService();
+
+      if (response.error) {
+        alert(response.massage);
+      } else {
+        setUsers(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    getUser();
+  }, [getUser]);
 
   return (
     <>
@@ -18,6 +45,61 @@ export default function Home() {
           <ol className="breadcrumb mb-4">
             <li className="breadcrumb-item active">Users</li>
           </ol>
+          <div className="card mb-4">
+            <div className="card-header">
+              <i className="fas fa-table me-1"></i>
+              Data Users{" "}
+              <div className="d-flex justify-content-end">
+                <Button
+                  type="button"
+                  onClickButton={getUser}
+                  isLoading={isLoading}
+                  className={["btn btn-primary btn-sm"]}
+                >
+                  <i className="fas fa-sync-alt me-1"></i>
+                </Button>
+              </div>
+            </div>
+            <div className="card-body">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Birthdate</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {users.map((item: userType, index) => (
+                    <tr key={index}>
+                      <th scope="row">{index + 1}</th>
+                      <td>{item.name}</td>
+                      <td>{item.birthdate}</td>
+                      <td>
+                        <Button
+                          type="button"
+                          // onClickButton={
+                          //   () => handleDetail(item.id)
+                          // }
+                          className={["btn btn-success btn-sm me-2"]}
+                        >
+                          Detail
+                        </Button>
+                        <Button
+                          type="button"
+                          // onClickButton={() => handleUpdate(item.id)}
+                          className={["btn btn-warning btn-sm"]}
+                        >
+                          Update
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </Layout>
     </>
