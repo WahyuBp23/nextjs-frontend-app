@@ -18,7 +18,7 @@ export default function Sidebar() {
                 </div>
                 Users
               </Button>
-              <Button type="link" className={["nav-link"]} href="/books">
+              <Button type="link" className={["nav-link"]} href="books/">
                 <div className="sb-nav-link-icon">
                   <i className="fas fa-book"></i>
                 </div>

@@ -16,7 +16,7 @@ export default function Home() {
       const response = await userService();
 
       if (response.error) {
-        alert(response.massage);
+        alert(response.message);
       } else {
         setUsers(response.data);
       }
@@ -66,7 +66,7 @@ export default function Home() {
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nama</th>
-                    <th scope="col">Birthdate</th>
+                    <th scope="col">Tanggal Lahir</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -77,22 +77,24 @@ export default function Home() {
                       <td>{item.name}</td>
                       <td>{item.birthdate}</td>
                       <td>
-                        <Button
-                          type="button"
-                          // onClickButton={
-                          //   () => handleDetail(item.id)
-                          // }
-                          className={["btn btn-success btn-sm me-2"]}
-                        >
-                          Detail
-                        </Button>
-                        <Button
-                          type="button"
-                          // onClickButton={() => handleUpdate(item.id)}
-                          className={["btn btn-warning btn-sm"]}
-                        >
-                          Update
-                        </Button>
+                        <td>
+                          <Button
+                            type="button"
+                            // onClickButton={
+                            //   () => handleDetail(item.id)
+                            // }
+                            className={['btn btn-success btn-sm me-2']}
+                          >
+                            Detail
+                          </Button>
+                          <Button
+                            type="button"
+                            // onClickButton={() => handleUpdate(item.id)}
+                            className={['btn btn-warning btn-sm']}
+                          >
+                            Update
+                          </Button>
+                        </td>
                       </td>
                     </tr>
                   ))}

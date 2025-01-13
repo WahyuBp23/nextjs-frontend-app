@@ -32,10 +32,10 @@ export default function Button({
   if (isDisabled || isLoading) {
     if (isDisabled) className?.push("disabled");
     return (
-      <span className={className?.join(" ")} style={style as CSSProperties}>
+      <span className={className?.join(' ')} style={style as CSSProperties}>
         {isLoading ? (
           <>
-            <span className={`spinner-border spinner-border-sm`} role="status">
+            <span className="spinner-border spinner-border-sm" role="status">
               <span className="visually-hidden">Loading...</span>
             </span>
           </>
@@ -45,13 +45,12 @@ export default function Button({
       </span>
     );
   }
-
   if (type === "link") {
     if (isExternal) {
       return (
         <a
           href={href}
-          className={className?.join(" ")}
+          className={className?.join(' ')}
           style={style as CSSProperties}
           title={title}
           target={target}
@@ -63,8 +62,8 @@ export default function Button({
     } else {
       return (
         <Link
-          className={className?.join(" ")}
-          href={href || ""}
+          className={className?.join(' ')}
+          href={href || ''}
           style={style as CSSProperties}
           onClick={onClickA}
         >
@@ -73,11 +72,10 @@ export default function Button({
       );
     }
   }
-
   return (
     <button
       title={title}
-      className={className?.join(" ")}
+      className={className?.join(' ')}
       style={style as CSSProperties}
       onClick={
         onClickButton && typeof onClickButton === "function"

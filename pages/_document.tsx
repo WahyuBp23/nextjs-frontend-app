@@ -1,4 +1,4 @@
-import { Html, Head, Main, NextScript } from "next/document";
+import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
   return (
@@ -11,7 +11,7 @@ export default function Document() {
       <script
         src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
         crossOrigin="anonymous"
-      />
+      ></script>
 
       <body>
         <Main />
@@ -23,8 +23,8 @@ export default function Document() {
           crossOrigin="anonymous"
           defer
         /> */}
-        {/* <script src="/assets/js/demo/chart-area-demo.js" defer /> */}
-        {/* <script src="/assets/js/demo/chart-bar-demo.js" defer /> */}
+        {/* <script src="/assets/js/demo/chart-area-demo.js" defer />
+        <script src="/assets/js/demo/chart-bar-demo.js" defer /> */}
         <script
           src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
           crossOrigin="anonymous"
