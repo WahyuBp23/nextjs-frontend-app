@@ -49,7 +49,7 @@ export default function Home() {
             <div className="card-header">
               <i className="fas fa-table me-1"></i>
               Data Users{" "}
-              <div className="d-flex justify-content-end">
+              <div className="d-flex justify-content-end gap-1">
                 <Button
                   type="button"
                   onClickButton={getUser}
@@ -57,6 +57,13 @@ export default function Home() {
                   className={["btn btn-primary btn-sm"]}
                 >
                   <i className="fas fa-sync-alt me-1"></i>
+                </Button>
+                <Button
+                  type="link"
+                  href="/user/create"
+                  className={["btn btn-primary btn-sm me-2"]}
+                >
+                  Tambah Data
                 </Button>
               </div>
             </div>
@@ -66,7 +73,7 @@ export default function Home() {
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nama</th>
-                    <th scope="col">Tanggal Lahir</th>
+                    <th scope="col">Birthdate</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -77,24 +84,31 @@ export default function Home() {
                       <td>{item.name}</td>
                       <td>{item.birthdate}</td>
                       <td>
-                        <td>
-                          <Button
-                            type="button"
-                            // onClickButton={
-                            //   () => handleDetail(item.id)
-                            // }
-                            className={['btn btn-success btn-sm me-2']}
-                          >
-                            Detail
-                          </Button>
-                          <Button
-                            type="button"
-                            // onClickButton={() => handleUpdate(item.id)}
-                            className={['btn btn-warning btn-sm']}
-                          >
-                            Update
-                          </Button>
-                        </td>
+                        <Button
+                          type="button"
+                          // onClickButton={
+                          //   () => handleDetail(item.id)
+                          // }
+                          className={["btn btn-success btn-sm me-2"]}
+                        >
+                          Detail
+                        </Button>
+                        <Button
+                          type="link"
+                          href={`user/edit/${item.id}`}
+                          className={["btn btn-warning btn-sm me-2"]}
+                        >
+                          Update
+                        </Button>
+                        <Button
+                          type="link"
+                          // onClickButton={
+                          //   () => handleDetele(item.id)
+                          // }
+                          className={["btn btn-danger btn-sm me-2"]}
+                        >
+                          delete
+                        </Button>
                       </td>
                     </tr>
                   ))}
